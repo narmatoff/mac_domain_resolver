@@ -6,6 +6,7 @@ EXCLUDED_DOMAINS=(
   "telegra.ph"
   "auth.iam.sbercloud.ru"
   "iam.sbercloud.ru"
+  "cloud.domrf.ru"
   "sbercloud.ru"
   "github.com"
   "ghcr.io"
