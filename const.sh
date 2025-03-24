@@ -18,6 +18,7 @@ EXCLUDED_DOMAINS=(
   "mp.apps.k8s.dev.domoy.ru"
   "xn--80az8a.xn--d1aqf.xn--p1ai"
   "wiki.domrf.ru"
+  "91.206.127.42"
   "gitlab.ahml.ru"
   "jira.domrf.ru"
   "bitwarden.dev.domoy.ru"
