@@ -3,6 +3,7 @@
 LOCAL_GATEWAY=$(netstat -rn | awk '/^default/ {print $2}' | grep -Eo '[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+' | head -n 1)
 
 EXCLUDED_DOMAINS=(
+  "dev-vpn.domrf.ru"
   "telegra.ph"
   "vcs2.tc.domrf.ru"
   "tc.domrf.ru"
@@ -18,7 +19,6 @@ EXCLUDED_DOMAINS=(
   "lms.synergy.ru"
   "domrf.ru"
   "kedo.domrf.ru"
-  "dev-vpn.domrf.ru"
   "mp.apps.k8s.dev.domoy.ru"
   "idm.apps.k8s.dev.domoy.ru"
   "xn--80az8a.xn--d1aqf.xn--p1ai"
@@ -34,8 +34,6 @@ EXCLUDED_DOMAINS=(
   "www.speedtest.net"
   "speedtest.net"
   "beget.com"
-  "2ip.ru"
-  "2ip.io"
   "ya.ru"
   "yandex.ru"
   "id.domrf.ru"
@@ -46,6 +44,37 @@ EXCLUDED_DOMAINS=(
   "stripmag.ru"
   "avito.ru"
   "ozon.ru"
+)
+
+STATIC_ROUTES=(
+  "10.208.38.0/24"
+  "10.209.38.0/24"
+  "10.3.60.0/24"
+  "10.60.0.0/24"
+  "10.210.34.0/24"
+  "10.210.33.0/24"
+  "10.208.206.0/24"
+  "10.209.206.0/24"
+  "10.208.39.0/24"
+  "10.212.3.0/24"
+  "10.208.37.0/24"
+  "10.209.37.0/24"
+  "10.3.49.0/24"
+  "10.208.232.0/24"
+  "10.210.0.0/24"
+  "10.3.50.0/24"
+  "10.210.30.0/24"
+  "10.50.0.0/24"
+  "10.46.0.0/24"
+  "10.21.96.0/24"
+  "10.212.0.0/16"
+  "10.208.0.0/16"
+  "10.209.0.0/16"
+  "10.79.0.0/24"
+  "10.79.2.0/24"
+  "10.58.0.0/24"
+  "10.208.3.190/32"
+  "10.209.3.190/32"
 )
 
 EXCLUDED_IPS=(
