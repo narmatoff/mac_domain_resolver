@@ -44,6 +44,7 @@ EXCLUDED_DOMAINS=(
   "stripmag.ru"
   "avito.ru"
   "ozon.ru"
+  "2ip.ru"
 )
 
 STATIC_ROUTES=(
