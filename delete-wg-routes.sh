@@ -2,18 +2,25 @@
 
 source ./const.sh
 
-echo "# === Добавление маршрутов ==="
+echo "# === Удаление маршрутов, исключённых из WireGuard ==="
 
-for DOMAIN in "${EXCLUDED_DOMAINS[@]}"; do
-  dig +short "$DOMAIN" | grep -E '^[0-9.]+' | sort -u | while read -r IP; do
-    sudo route -n delete "$IP/32" "$LOCAL_GATEWAY"
-  done
-done
-
-for IP in "${EXCLUDED_IPS[@]}"; do
-  sudo route -n delete "$IP/32" "$LOCAL_GATEWAY"
-done
-
+# Удаляем маршруты для подсетей (Cisco AnyConnect)
 for SUBNET in "${STATIC_ROUTES[@]}"; do
-  sudo route -n delete "$SUBNET" "$LOCAL_GATEWAY"
+  echo "Удаление маршрута для подсети $SUBNET"
+  sudo route -n delete -net "$SUBNET" 2>/dev/null
+done
+
+# Удаляем маршруты для IP
+for IP in "${EXCLUDED_IPS[@]}"; do
+  echo "Удаление маршрута для IP $IP"
+  sudo route -n delete -host "$IP" 2>/dev/null
+done
+
+# Удаляем маршруты для резолвленных доменов
+for DOMAIN in "${EXCLUDED_DOMAINS[@]}"; do
+  echo "Резолвим $DOMAIN..."
+  dig +short "$DOMAIN" | grep -E '^[0-9.]+' | sort -u | while read -r IP; do
+    echo "Удаление маршрута для $DOMAIN ($IP)"
+    sudo route -n delete -host "$IP" 2>/dev/null
+  done
 done
